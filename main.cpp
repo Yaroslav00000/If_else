@@ -5,32 +5,20 @@ using namespace std;
 int main() {
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
-    int number;
+    int max_number = INT_MIN;
 
-    cout << "Введіть шестизначне число: ";
-    cin >> number;
-    if (number < 100000 || number > 999999) {
-        cout << "Помилка! Введіть шестизначне число." << endl;
-        return 1;
+    for (int i = 0; i < 7; ++i) {
+        int number;
+        cout << "Введіть " << i + 1 << "-е число: ";
+        cin >> number;
+
+        if (number > max_number) {
+            max_number = number;
+        }
     }
-    int firstPart = number / 1000;
-    int secondPart = number % 1000;
-    int sumOfFirstPart = 0;
-    int sumOfSecondPart = 0;
-    while (firstPart > 0) {
-        sumOfFirstPart += firstPart % 10;
-        firstPart /= 10;
-    }
-    while (secondPart > 0) {
-        sumOfSecondPart += secondPart % 10;
-        secondPart /= 10;
-    }
-    if (sumOfFirstPart == sumOfSecondPart) {
-        cout << number << " - щасливе число!" << endl;
-    }
-    else {
-        cout << number << " - не щасливе число." << endl;
-    }
+
+    cout << "Максимальне число: " << max_number << endl;
+
     system("pause");
     return 0;
 }
